@@ -174,7 +174,7 @@ orchestra
 
 ## Client Configuration and Patching (APK)
 
-APK: https://github.com/ZOVserver/ZOVserver/releases/download/V24/ZOVclient_s2417.apk
+APK: https://github.com/ZOVserver/ZOVserver/releases/download/V24/ZOVclient_s2417_.apk
 
 The `libsettings.so` file is generated using `settings_creator.py` in the `client/` directory.
 
