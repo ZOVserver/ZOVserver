@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOVserver.Shared.Contracts", "ZOVserver.Shared.Contracts\ZOVserver.Shared.Contracts.csproj", "{DFDA7D84-B654-46C5-9ACF-722515C36018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOVserver.Shared.Contracts.Proto", "ZOVserver.Shared.Contracts.Proto\ZOVserver.Shared.Contracts.Proto.csproj", "{FF50C475-4B83-42BA-AB07-2954B38652BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZOVserver.Shared.Contracts.Generator", "ZOVserver.Shared.Contracts.Generator\ZOVserver.Shared.Contracts.Generator.csproj", "{F64FD34D-CF43-45D8-A2EA-41020F5DBCEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFDA7D84-B654-46C5-9ACF-722515C36018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDA7D84-B654-46C5-9ACF-722515C36018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDA7D84-B654-46C5-9ACF-722515C36018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDA7D84-B654-46C5-9ACF-722515C36018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF50C475-4B83-42BA-AB07-2954B38652BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF50C475-4B83-42BA-AB07-2954B38652BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF50C475-4B83-42BA-AB07-2954B38652BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF50C475-4B83-42BA-AB07-2954B38652BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64FD34D-CF43-45D8-A2EA-41020F5DBCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64FD34D-CF43-45D8-A2EA-41020F5DBCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64FD34D-CF43-45D8-A2EA-41020F5DBCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64FD34D-CF43-45D8-A2EA-41020F5DBCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

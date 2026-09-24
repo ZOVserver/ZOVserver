@@ -1,0 +1,12 @@
+{
+  "0": "Uw apparaat wordt niet ondersteund!",
+  "1": "Je apparaat is permanent verbannen!",
+  "2": "Installeer de nieuwste versie van het spel.",
+  "3": "Verificatieservice voor accountgegevens is niet beschikbaar! Dit is een kritieke fout die zichzelf niet kan oplossen! Stuur een screenshot naar de ontwikkelaars en probeer niet in te loggen totdat het probleem is opgelost.",
+  "4": "loginMessage.PassToken is niet leeg! Wis de applicatiegegevens.",
+  "5": "loginMessage.AccountId is onbekend bij de verificatieservice voor accountgegevens! Wis de applicatiegegevens.",
+  "6": "loginMessage.PassToken is ongeldig voor loginMessage.AccountId (authenticatiefout)! Wis de applicatiegegevens.",
+  "7": "bridgeEvent.SessionId is niet de huidige sessie-ID. Evenementtype:",
+  "8": "SUPER AANBIEDING",
+  "9": "SPECIALE AANBIEDING"
+}

@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+
+package messagesservice;
+
+service MessagesService {
+  rpc SendMessages (SendMessagesRequest) returns (SendMessagesResponse);
+}
+
+message HighLowId {
+  int32 high = 1;
+  int32 low = 2;
+}
+
+message MessageItem {
+  string text = 1;
+  bool from_support = 2;
+}
+
+message SendMessagesRequest {
+  HighLowId player_id = 1;
+  repeated MessageItem messages = 2;
+}
+
+message SendMessagesResponse {
+  bool success = 1;
+  string message = 2;
+}

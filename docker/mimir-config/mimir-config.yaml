@@ -1,0 +1,45 @@
+target: all
+
+server:
+  http_listen_port: 9009
+  grpc_listen_port: 9095
+
+common:
+  storage:
+    backend: s3
+    s3:
+      endpoint: seaweedfs-s3:8333
+      access_key_id: any_access_key
+      secret_access_key: any_secret_key
+      bucket_name: mimir-data
+      insecure: true
+
+blocks_storage:
+  backend: s3
+  s3:
+    bucket_name: mimir-data
+  tsdb:
+    dir: /tmp/mimir/tsdb
+
+ruler_storage:
+  backend: s3
+  s3:
+    bucket_name: mimir-rules
+
+alertmanager_storage:
+  backend: s3
+  s3:
+    bucket_name: mimir-alerts
+
+ingester:
+  ring:
+    replication_factor: 1
+
+limits:
+  compactor_blocks_retention_period: 876000h
+
+runtime_config:
+  file: /etc/mimir/runtime-config.yaml
+
+compactor:
+  data_dir: /tmp/mimir/compactor

@@ -1,0 +1,13 @@
+{
+  "Enabled": true,
+  "ScFileName": "sc/supercell_id.sc",
+  "Game": "laser",
+  "PreloadingEnabled": true,
+  "UseNative": false,
+  "UseNativeCountries": [
+  ],
+  "GameHelpLink": "https://supercell.helpshift.com/a/brawl-stars/?p=web&s=supercell-id",
+  "InternalDomains": [
+    "www.google.com"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "0": "Perangkat Anda tidak didukung!",
+  "1": "Perangkat Anda diblokir secara permanen!",
+  "2": "Silakan instal game versi terbaru.",
+  "3": "Layanan verifikasi data akun tidak tersedia! Ini adalah kesalahan kritis dan tidak dapat teratasi dengan sendirinya! Silakan kirim tangkapan layar ke pengembang dan jangan mencoba masuk sampai masalah teratasi.",
+  "4": "loginMessage.PassToken tidak kosong! Silakan hapus data aplikasi.",
+  "5": "loginMessage.AccountId tidak diketahui oleh layanan verifikasi data akun! Silakan hapus data aplikasi.",
+  "6": "loginMessage.PassToken tidak valid untuk loginMessage.AccountId (kesalahan autentikasi)! Silakan hapus data aplikasi.",
+  "7": "bridgeEvent.SessionId bukan ID sesi saat ini. Jenis acara:",
+  "8": "PENAWARAN SUPER",
+  "9": "PENAWARAN KHUSUS"
+}

@@ -1,0 +1,12 @@
+{
+  "0": "Cihazınız desteklenmiyor!",
+  "1": "Cihazınız kalıcı olarak yasaklandı!",
+  "2": "Lütfen oyunun en son sürümünü yükleyin.",
+  "3": "Hesap verileri doğrulama hizmeti kullanılamıyor! Bu kritik bir hatadır ve kendi kendine çözülemez! Lütfen geliştiricilere bir ekran görüntüsü gönderin ve sorun çözülene kadar oturum açmaya çalışmayın.",
+  "4": "loginMessage.PassToken boş değil! Lütfen uygulama verilerini temizleyin.",
+  "5": "loginMessage.AccountId, hesap verileri doğrulama hizmeti tarafından bilinmiyor! Lütfen uygulama verilerini temizleyin.",
+  "6": "loginMessage.PassToken, loginMessage.AccountId için geçersiz (kimlik doğrulama hatası)! Lütfen uygulama verilerini temizleyin.",
+  "7": "BridgeEvent.SessionId geçerli oturum kimliği değil. Etkinlik türü:",
+  "8": "SÜPER TEKLİF",
+  "9": "ÖZEL TEKLİF"
+}

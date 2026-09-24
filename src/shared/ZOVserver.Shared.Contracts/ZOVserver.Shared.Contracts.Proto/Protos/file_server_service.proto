@@ -1,0 +1,70 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "ZOVserver.Shared.Contracts.Proto";
+
+service FileServerService {
+  rpc UploadFile (UploadRequest) returns (UploadResponse);
+  rpc UpdateFile (UploadRequest) returns (UploadResponse);
+  rpc DeleteFile (FileRequest) returns (DeleteResponse);
+  rpc GetFile (FileRequest) returns (FileResponse);
+  rpc GetAllFiles (FileFilter) returns (AllFilesResponse);
+  rpc ListFiles (FileFilter) returns (FileListResponse);
+}
+
+message UploadRequest {
+  string target_path = 1;
+  bytes chunk_data = 2;
+}
+
+message UploadResponse {
+  bool success = 1;
+  string saved_path = 2;
+  int64 file_size = 3;
+}
+
+message FileRequest {
+  string path = 1;
+  bool readFileAsBytes = 2;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message FileResponse {
+  bytes data = 1;
+  string filename = 2;
+}
+
+message FileFilter {
+  repeated string extensions = 1;
+  bool include_subfolders = 2;
+  bool readFilesAsBytes = 3;
+}
+
+message AllFilesResponse {
+  repeated FileEntry files = 1;
+}
+
+message FileListResponse {
+  repeated FileCInfo files = 1;
+}
+
+message FileCInfo {
+  string path = 1;
+  string extension = 2;
+  int64 size_bytes = 3;
+  string last_modified = 4;
+}
+
+message FileEntry {
+  string path = 1;
+  bytes data = 2;
+}
+
+message FileChunk {
+  bytes data = 1;
+  string filename = 2;
+  bool is_last = 3;
+}

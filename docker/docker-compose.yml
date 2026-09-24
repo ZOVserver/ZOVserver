@@ -1,0 +1,425 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: zovserver-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 256M
+
+  consul:
+    image: hashicorp/consul:latest
+    container_name: zovserver-consul
+    restart: unless-stopped
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+  nats:
+    image: nats:latest
+    container_name: zovserver-nats
+    restart: unless-stopped
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.2'
+          memory: 128M
+  
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.17
+    container_name: zovserver-etcd
+    restart: unless-stopped
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    command:
+      - /usr/local/bin/etcd
+      - --name=node1
+      - --data-dir=/etcd-data
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://etcd:2379
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://etcd:2380
+      - --initial-cluster=node1=http://etcd:2380
+      - --initial-cluster-token=etcd-cluster-token
+      - --initial-cluster-state=new
+      - --auto-compaction-retention=1
+      - --quota-backend-bytes=2147483648
+      - --snapshot-count=10000
+    volumes:
+      - etcd-data:/etcd-data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 640M
+        reservations:
+          cpus: '0.2'
+          memory: 256M
+
+  seaweedfs-master:
+    image: chrislusf/seaweedfs:latest
+    container_name: zovserver-seaweedfs-master
+    restart: unless-stopped
+    ports:
+      - "9333:9333"
+    command: "master -ip=seaweedfs-master"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 128M
+
+  seaweedfs-volume:
+    image: chrislusf/seaweedfs:latest
+    container_name: zovserver-seaweedfs-volume
+    restart: unless-stopped
+    command: "volume -master=seaweedfs-master:9333 -dir=/data -max=0"
+    volumes:
+      - seaweedfs-data:/data
+    depends_on:
+      - seaweedfs-master
+
+  seaweedfs-filer:
+    image: chrislusf/seaweedfs:latest
+    container_name: zovserver-seaweedfs-filer
+    restart: unless-stopped
+    command: "filer -master=seaweedfs-master:9333"
+    depends_on:
+      - seaweedfs-master
+      - seaweedfs-volume
+
+  seaweedfs-s3:
+    image: chrislusf/seaweedfs:latest
+    container_name: zovserver-seaweedfs-s3
+    restart: unless-stopped
+    ports:
+      - "8333:8333"
+    command: "s3 -filer=seaweedfs-filer:8888 -port=8333"
+    depends_on:
+      - seaweedfs-filer
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+  
+  seaweedfs-create-buckets:
+    image: minio/mc
+    container_name: zovserver-minio-mc
+    depends_on:
+      - seaweedfs-s3
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set myseaweed http://seaweedfs-s3:8333/ any_access_key any_secret_key) do 
+        echo 'Waiting for SeaweedFS S3...' && sleep 1; 
+      done;
+      /usr/bin/mc mb myseaweed/mimir-data || echo 'Bucket mimir-data already exists';
+      /usr/bin/mc mb myseaweed/mimir-rules || echo 'Bucket mimir-rules already exists';
+      /usr/bin/mc mb myseaweed/mimir-alerts || echo 'Bucket mimir-alerts already exists';
+      exit 0;
+      "
+
+  mimir:
+    image: grafana/mimir:latest
+    container_name: zovserver-mimir
+    user: root
+    restart: unless-stopped
+    ports:
+      - "9009:9009"
+    volumes:
+      - ./mimir-config:/etc/mimir
+    command: [ "-config.file=/etc/mimir/mimir-config.yaml" ]
+    depends_on:
+      - seaweedfs-s3
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 256M
+  
+  alloy:
+    image: grafana/alloy:latest
+    container_name: zovserver-alloy
+    restart: unless-stopped
+    ports:
+      - "12345:12345"
+    volumes:
+      - ./alloy-config:/etc/alloy
+    command: [
+      "run",
+      "--storage.path=/var/lib/alloy/data",
+      "--server.http.listen-addr=0.0.0.0:12345",
+      "/etc/alloy/config.alloy"
+    ]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 256M
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: zovserver-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  redis-cache:
+    image: redis:7.2-alpine
+    container_name: zovserver-redis-cache
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    command: [
+      "redis-server",
+      "--maxmemory", "1gb",
+      "--maxmemory-policy", "allkeys-lru"
+    ]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+  
+  zk1:
+    image: zookeeper:latest
+    restart: unless-stopped
+    hostname: zk1
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+    ports:
+      - "2181:2181"
+    volumes:
+      - zk1-data:/data
+      - zk1-log:/datalog
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+
+  zk2:
+    image: zookeeper:latest
+    restart: unless-stopped
+    hostname: zk2
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+    ports:
+      - "2182:2181"
+    volumes:
+      - zk2-data:/data
+      - zk2-log:/datalog
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+
+  zk3:
+    image: zookeeper:latest
+    restart: unless-stopped
+    hostname: zk3
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+    ports:
+      - "2183:2181"
+    volumes:
+      - zk3-data:/data
+      - zk3-log:/datalog
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+  
+  zoonavigator:
+    image: elkozmon/zoonavigator:latest
+    container_name: zoonavigator
+    restart: unless-stopped
+    ports:
+      - "9005:9000"
+    environment:
+      HTTP_PORT: 9000
+  
+  opensearch-node1:
+    image: opensearchproject/opensearch:latest
+    container_name: zovserver-opensearch-node1
+    environment:
+      - cluster.name=my-cluster
+      - node.name=node1
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2
+      - cluster.initial_master_nodes=node1,node2
+      - bootstrap.memory_lock=true
+      - DISABLE_SECURITY_PLUGIN=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data1:/usr/share/opensearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+
+  opensearch-node2:
+    image: opensearchproject/opensearch:latest
+    container_name: zovserver-opensearch-node2
+    environment:
+      - cluster.name=my-cluster
+      - node.name=node2
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2
+      - cluster.initial_master_nodes=node1,node2
+      - bootstrap.memory_lock=true
+      - DISABLE_SECURITY_PLUGIN=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data2:/usr/share/opensearch/data
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.2'
+          memory: 512M
+  
+  garnet-leaderboard:
+    image: ghcr.io/microsoft/garnet:latest
+    container_name: zovserver-garnet-leaderboard
+    user: root
+    restart: unless-stopped
+    ports:
+      - "6191:6191"
+    volumes:
+      - garnet-data-leaderboard:/GarnetData
+    command: [
+      "--port", "6191",
+      "--bind", "0.0.0.0",
+      "--aof",
+      "--aof-commit-freq", "3000",
+      "--checkpointdir", "/GarnetData/cp",
+      "--recover"
+    ]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.1'
+          memory: 256M
+
+  garnet-teamsearch:
+    image: ghcr.io/microsoft/garnet:latest
+    container_name: zovserver-garnet-teamsearch
+    user: root
+    restart: unless-stopped
+    ports:
+      - "6194:6194"
+    volumes:
+      - garnet-data-teamsearch:/GarnetData
+    command: [
+      "--port", "6194",
+      "--bind", "0.0.0.0",
+      "--aof",
+      "--aof-commit-freq", "3000",
+      "--checkpointdir", "/GarnetData/cp",
+      "--recover"
+    ]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.1'
+          memory: 256M
+
+volumes:
+  mongo-data:
+  seaweedfs-data:
+  grafana-data:
+  etcd-data:
+  zk1-data:
+  zk1-log:
+  zk2-data:
+  zk2-log:
+  zk3-data:
+  zk3-log:
+  opensearch-data1:
+  opensearch-data2:
+  garnet-data-leaderboard:
+  garnet-data-teamsearch:

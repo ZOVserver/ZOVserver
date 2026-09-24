@@ -1,0 +1,12 @@
+{
+  "0": "Votre appareil n'est pas pris en charge !",
+  "1": "Votre appareil est définitivement banni !",
+  "2": "Veuillez installer la dernière version du jeu.",
+  "3": "Le service de vérification des données du compte n'est pas disponible ! Il s’agit d’une erreur critique qui ne peut pas être résolue ! Veuillez envoyer une capture d'écran aux développeurs et n'essayez pas de vous connecter tant que le problème n'est pas résolu.",
+  "4": "loginMessage.PassToken n'est pas vide ! Veuillez effacer les données de l'application.",
+  "5": "loginMessage.AccountId est inconnu du service de vérification des données de compte ! Veuillez effacer les données de l'application.",
+  "6": "loginMessage.PassToken n'est pas valide pour loginMessage.AccountId (erreur d'authentification) ! Veuillez effacer les données de l'application.",
+  "7": "bridgeEvent.SessionId n'est pas l'ID de session actuelle. Type d'événement :",
+  "8": "SUPER OFFRE",
+  "9": "OFFRE SPÉCIALE"
+}

@@ -1,0 +1,12 @@
+{
+  "0": "Il tuo dispositivo non è supportato!",
+  "1": "Il tuo dispositivo è permanentemente bannato!",
+  "2": "Installa l'ultima versione del gioco.",
+  "3": "Il servizio di verifica dei dati dell'account non è disponibile! Questo è un errore critico e non può risolversi da solo! Invia uno screenshot agli sviluppatori e non tentare di accedere finché il problema non verrà risolto.",
+  "4": "loginMessage.PassToken non è vuoto! Si prega di cancellare i dati dell'applicazione.",
+  "5": "loginMessage.AccountId è sconosciuto al servizio di verifica dei dati dell'account! Si prega di cancellare i dati dell'applicazione.",
+  "6": "loginMessage.PassToken non è valido per loginMessage.AccountId (errore di autenticazione)! Si prega di cancellare i dati dell'applicazione.",
+  "7": "bridgeEvent.SessionId non è l'ID della sessione corrente. Tipo di evento:",
+  "8": "SUPEROFFERTA",
+  "9": "OFFERTA SPECIALE"
+}

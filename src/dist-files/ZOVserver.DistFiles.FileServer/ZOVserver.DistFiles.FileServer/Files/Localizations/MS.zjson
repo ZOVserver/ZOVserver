@@ -1,0 +1,12 @@
+{
+  "0": "Peranti anda tidak disokong!",
+  "1": "Peranti anda dilarang secara kekal!",
+  "2": "Sila pasang versi permainan terkini.",
+  "3": "Perkhidmatan pengesahan data akaun tidak tersedia! Ini adalah kesilapan kritikal dan tidak dapat menyelesaikannya sendiri! Sila hantar tangkapan skrin kepada pemaju dan jangan cuba log masuk sehingga masalah itu ditetapkan.",
+  "4": "LoginMessage.Passtoken tidak kosong! Sila jelaskan data permohonan.",
+  "5": "LoginMessage.AccountId tidak diketahui oleh Perkhidmatan Pengesahan Data Akaun! Sila jelaskan data permohonan.",
+  "6": "LoginMessage.Passtoken tidak sah untuk loginMessage.AccountId (ralat pengesahan)! Sila jelaskan data permohonan.",
+  "7": "BridgeEvent.SessionId bukan ID sesi semasa. Jenis Acara:",
+  "8": "Tawaran super",
+  "9": "Tawaran istimewa"
+}

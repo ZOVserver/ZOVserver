@@ -1,0 +1,12 @@
+{
+  "0": "Twoje urządzenie nie jest obsługiwane!",
+  "1": "Twoje urządzenie zostało trwale zablokowane!",
+  "2": "Zainstaluj najnowszą wersję gry.",
+  "3": "Usługa weryfikacji danych konta jest niedostępna! Jest to błąd krytyczny i nie można go usunąć! Wyślij zrzut ekranu do programistów i nie próbuj się logować, dopóki problem nie zostanie rozwiązany.",
+  "4": "loginMessage.PassToken nie jest pusty! Proszę wyczyścić dane aplikacji.",
+  "5": "loginMessage.AccountId jest nieznany usłudze weryfikacji danych konta! Proszę wyczyścić dane aplikacji.",
+  "6": "loginMessage.PassToken jest nieprawidłowy dla loginMessage.AccountId (błąd uwierzytelnienia)! Proszę wyczyścić dane aplikacji.",
+  "7": "BridgeEvent.SessionId nie jest identyfikatorem bieżącej sesji. Typ wydarzenia:",
+  "8": "SUPER OFERTA",
+  "9": "OFERTA SPECJALNA"
+}

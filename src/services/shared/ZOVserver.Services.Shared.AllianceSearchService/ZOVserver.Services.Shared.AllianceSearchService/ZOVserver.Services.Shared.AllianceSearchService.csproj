@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>ZOVserver</Authors>
+        <PackageProjectUrl>https://github.com/ZOVserver</PackageProjectUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OpenSearch.Client" Version="1.8.0" />
+        <PackageReference Include="ZOVserver.Shared.Contracts" Version="1.0.0" />
+    </ItemGroup>
+
+</Project>

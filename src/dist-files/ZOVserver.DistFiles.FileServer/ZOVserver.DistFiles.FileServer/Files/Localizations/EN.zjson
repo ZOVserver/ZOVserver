@@ -1,0 +1,12 @@
+{
+  "0": "Your device is not supported!",
+  "1": "Your device is permanently banned!",
+  "2": "Please install the latest version of the game.",
+  "3": "Account data verification service is unavailable! This is a critical error and cannot resolve itself! Please send a screenshot to the developers and do not attempt to login until the issue is fixed.",
+  "4": "loginMessage.PassToken is not empty! Please clear the application data.",
+  "5": "loginMessage.AccountId is unknown to the account data verification service! Please clear the application data.",
+  "6": "loginMessage.PassToken is invalid for loginMessage.AccountId (authentication error)! Please clear the application data.",
+  "7": "bridgeEvent.SessionId is not the current session ID. Event type: ",
+  "8": "SUPER OFFER",
+  "9": "SPECIAL OFFER"
+}

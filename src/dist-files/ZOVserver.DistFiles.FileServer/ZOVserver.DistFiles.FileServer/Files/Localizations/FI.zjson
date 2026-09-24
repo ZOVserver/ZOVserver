@@ -1,0 +1,12 @@
+{
+  "0": "Laitetta ei tueta!",
+  "1": "Laitteesi on kielletty pysyvästi!",
+  "2": "Asenna pelin uusin versio.",
+  "3": "Tilien tietojen tarkistuspalvelu ei ole käytettävissä! Tämä on kriittinen virhe eikä voi ratkaista itseään! Lähetä kuvakaappaus kehittäjille ja älä yritä kirjautua sisään, ennen kuin ongelma on korjattu.",
+  "4": "loginMessage.passtoken ei ole tyhjä! Tyhjennä sovellustiedot.",
+  "5": "loginMessage.accountid ei ole tiedossa tilitietojen varmennuspalvelulle! Tyhjennä sovellustiedot.",
+  "6": "loginMessage.Passtoken on virheellinen loginMessage.accountid (todennusvirhe)! Tyhjennä sovellustiedot.",
+  "7": "BridgeEvent.SessionID ei ole nykyinen istunnon tunnus. Tapahtumatyyppi:",
+  "8": "Supertarjous",
+  "9": "Erikoistarjous"
+}

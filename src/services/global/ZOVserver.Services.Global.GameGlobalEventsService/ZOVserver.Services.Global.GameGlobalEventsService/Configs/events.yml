@@ -1,0 +1,13 @@
+GenerateGemGrab: true
+GenerateShowdown: true
+GenerateDailyEvents: true # brawlball
+GenerateSpecialEvents: true
+
+DailyEventsGameModes:
+  - LaserBall
+
+SpecialEventsGameModes:
+  - BountyHunter
+  - AttackDefend
+  - RoboWars
+  - CaptureTheFlag

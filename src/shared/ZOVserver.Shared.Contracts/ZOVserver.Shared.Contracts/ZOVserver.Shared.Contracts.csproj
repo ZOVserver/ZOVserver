@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>ZOVserver</Authors>
+        <PackageProjectUrl>https://github.com/ZOVserver</PackageProjectUrl>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\Generated</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MessagePack" Version="3.1.7"/>
+        <PackageReference Include="Microsoft.Orleans.Core" Version="9.2.1"/>
+        <PackageReference Include="ZOVserver.Shared.Contracts.Generator" Version="1.0.3" />
+        <PackageReference Include="ZOVserver.Shared.TitanRemnants" Version="1.0.0" />
+    </ItemGroup>
+
+</Project>

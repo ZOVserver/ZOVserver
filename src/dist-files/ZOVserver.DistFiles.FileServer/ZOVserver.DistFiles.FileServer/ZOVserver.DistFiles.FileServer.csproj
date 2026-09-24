@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.76.0"/>
+        <PackageReference Include="Spectre.Console" Version="0.54.0"/>
+        <PackageReference Include="ZLinq" Version="1.5.5" />
+        <PackageReference Include="ZOVserver.Shared.Contracts.Proto" Version="1.0.0" />
+    </ItemGroup>
+
+</Project>

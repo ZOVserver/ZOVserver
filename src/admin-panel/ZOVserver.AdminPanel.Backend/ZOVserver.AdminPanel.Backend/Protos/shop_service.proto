@@ -1,0 +1,61 @@
+﻿syntax = "proto3";
+
+package shopservice;
+
+service ShopService {
+  rpc CreatePromotion (CreatePromotionRequest) returns (CreatePromotionResponse);
+  rpc DeletePromotion (DeletePromotionRequest) returns (DeletePromotionResponse);
+  rpc GetPromotionHistory (GetPromotionHistoryRequest) returns (GetPromotionHistoryResponse);
+}
+
+message PromotionItem {
+  int32 item_type = 1;
+  int32 quantity = 2;
+  string brawler_name = 3;
+  string skin_name = 4;
+}
+
+message CreatePromotionRequest {
+  string name = 1;
+  bool is_daily = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  double price = 5;
+  double old_price = 6;
+  int32 price_type = 7;
+  string background = 8;
+  bool show_to_new_users = 9;
+  repeated PromotionItem items = 10;
+}
+
+message CreatePromotionResponse {
+  bool success = 1;
+  string message = 2;
+  string promotion_id = 3;
+}
+
+message DeletePromotionRequest {
+  string promotion_id = 1;
+}
+
+message DeletePromotionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetPromotionHistoryRequest {
+}
+
+message PromotionHistoryEntry {
+  string promotion_id = 1;
+  string name = 2;
+  int64 created_at = 3;
+  int64 start_time = 4;
+  int64 end_time = 5;
+}
+
+message GetPromotionHistoryResponse {
+  bool success = 1;
+  string message = 2;
+  repeated PromotionHistoryEntry promotions = 3;
+}

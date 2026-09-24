@@ -1,0 +1,5 @@
+overrides:
+  "tenant_fast":
+    compactor_blocks_retention_period: 360h
+  "tenant_long":
+    compactor_blocks_retention_period: 876000h

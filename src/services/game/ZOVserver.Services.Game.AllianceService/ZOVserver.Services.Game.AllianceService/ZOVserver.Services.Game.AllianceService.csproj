@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <PackageReference Include="Microsoft.Orleans.Clustering.ZooKeeper" Version="9.2.1"/>
+        <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1"/>
+        <PackageReference Include="Orleans.Providers.MongoDB" Version="9.5.0"/>
+        <PackageReference Include="Microsoft.Orleans.Clustering.Consul" Version="9.2.1"/>
+        <PackageReference Include="Microsoft.Orleans.Persistence.Redis" Version="9.2.1"/>
+        <PackageReference Include="YamlDotNet" Version="16.3.0"/>
+        <PackageReference Include="ZLinq" Version="1.5.5"/>
+        <PackageReference Include="ZOVserver.Services.Shared.AllianceSearchService" Version="1.0.0" />
+        <PackageReference Include="ZOVserver.Services.Shared.GarnetLeaderboardsService" Version="1.0.0" />
+        <PackageReference Include="ZOVserver.Services.Shared.TeamPlayersSearchService" Version="1.0.0" />
+        <PackageReference Include="ZOVserver.Shared.Abstractions" Version="1.0.0" />
+        <PackageReference Include="ZOVserver.Shared.Contracts.Proto" Version="1.0.0"/>
+        <PackageReference Include="ZOVserver.Shared.Contracts" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="NLog.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>

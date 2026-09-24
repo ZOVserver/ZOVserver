@@ -1,0 +1,40 @@
+prometheus.remote_write "mimir_fast" {
+  endpoint {
+    url = "http://zovserver-mimir:9009/api/v1/push"
+    headers = { "X-Scope-OrgID" = "tenant_fast" }
+  }
+}
+
+prometheus.remote_write "mimir_long" {
+  endpoint {
+    url = "http://zovserver-mimir:9009/api/v1/push"
+    headers = { "X-Scope-OrgID" = "tenant_long" }
+  }
+}
+
+discovery.consul "orleans_silos" {
+  server = "zovserver-consul:8500"
+  services = ["orleans-silo"] 
+}
+
+prometheus.scrape "fast_flow" {
+  targets         = discovery.consul.orleans_silos.targets
+  scrape_interval = "15s"
+  forward_to      = [prometheus.remote_write.mimir_fast.receiver]
+}
+
+prometheus.relabel "keep_specific_metrics" {
+  forward_to = [prometheus.remote_write.mimir_long.receiver]
+
+  rule {
+    source_labels = ["__name__"]
+    regex         = "player_registrations_total|club_registrations_total|room_registrations_total"
+    action        = "keep"
+  }
+}
+
+prometheus.scrape "long_flow" {
+  targets         = discovery.consul.orleans_silos.targets
+  scrape_interval = "1m"
+  forward_to      = [prometheus.relabel.keep_specific_metrics.receiver]
+}

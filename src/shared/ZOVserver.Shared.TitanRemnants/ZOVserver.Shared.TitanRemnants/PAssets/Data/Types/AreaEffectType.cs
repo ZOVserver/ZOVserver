@@ -1,0 +1,60 @@
+﻿using System.Collections.Frozen;
+
+namespace ZOVserver.Shared.TitanRemnants.PAssets.Data.Types;
+
+public static class AreaEffectType
+{
+    public static readonly FrozenDictionary<string, int> Values = new Dictionary<string, int>
+    {
+        { "Damage", 0 },
+        { "SmokeScreen", 1 },
+        { "Dot", 2 },
+        { "Heal", 3 },
+        { "Hot", 4 },
+        { "BulletExplosion", 5 },
+        { "Effect", 6 },
+        { "Pushback", 7 },
+        { "DelayedDamage", 8 },
+        { "HeroSpawn", 9 },
+        { "DamageBoost", 10 },
+        { "SpeedBuff", 11 },
+        { "ReloadSpeedBuff", 12 },
+        { "ShieldBuff", 13 },
+        { "PercentDamage", 14 },
+        { "WallSpawn", 15 },
+        { "Stun", 16 },
+        { "HealRegen", 17 },
+        { "ChargeSuper", 18 },
+        { "Slow", 19 },
+        { "PetrolDistribution", 20 },
+        { "Slippery", 21 },
+        { "HealAndDamage", 22 },
+        { "IncreaseHealth", 23 },
+        { "Cleanse", 24 },
+        { "Silence", 25 },
+        { "Rebuild", 26 },
+        { "EnemyChargeSuper", 27 },
+        { "Vision", 28 },
+        { "VisionSlow", 29 },
+        { "InvasionIndicator", 30 },
+        { "AllyChargeSuper", 31 },
+        { "DamageAndStatusEffect", 32 },
+        { "ExtraSuperCharge", 33 },
+        { "EnragerOverchargeSuper", 34 },
+        { "SwitchSkill", 35 },
+        { "DamageDrain", 36 },
+        { "HotAndDot", 37 },
+        { "StatusEffect", 38 },
+        { "CrossSlashGround", 39 },
+        { "HealOnlyAllies", 40 },
+        { "SpeedDebuff", 41 },
+        { "BulletSpin", 42 },
+        { "BulletSpin2", 43 },
+        { "MeepleWallSpawn", 44 },
+        { "HpBasedStun", 45 },
+        { "MeepleCheatArea", 46 },
+        { "HotAndOverheals", 47 },
+        { "WeakSpotAttack", 48 },
+        { "LoseAmmo", 49 }
+    }.ToFrozenDictionary();
+}

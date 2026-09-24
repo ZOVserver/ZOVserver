@@ -1,0 +1,11 @@
+example cluster gernetserver.exe:
+
+memurai-cli --cluster create 127.0.0.1:6191 127.0.0.1:6192 127.0.0.1:6193 --cluster-yes
+memurai-cli -p 6191 cluster nodes
+
+memurai-cli -p 6194 cluster set-config-epoch 1
+memurai-cli -p 6195 cluster set-config-epoch 2
+memurai-cli -p 6194 cluster meet 127.0.0.1 6195
+memurai-cli -p 6194 cluster addslotsrange 0 8191
+memurai-cli -p 6195 cluster addslotsrange 8192 16383
+memurai-cli -p 6194 cluster nodes

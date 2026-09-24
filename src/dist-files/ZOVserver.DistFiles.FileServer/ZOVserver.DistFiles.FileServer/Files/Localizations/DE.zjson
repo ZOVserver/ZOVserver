@@ -1,0 +1,12 @@
+{
+  "0": "Ihr Gerät wird nicht unterstützt!",
+  "1": "Ihr Gerät ist dauerhaft gesperrt!",
+  "2": "Bitte installieren Sie die neueste Version des Spiels.",
+  "3": "Der Dienst zur Überprüfung der Kontodaten ist nicht verfügbar! Dies ist ein kritischer Fehler und kann nicht von selbst behoben werden! Bitte senden Sie einen Screenshot an die Entwickler und versuchen Sie nicht, sich anzumelden, bis das Problem behoben ist.",
+  "4": "loginMessage.PassToken ist nicht leer! Bitte löschen Sie die Bewerbungsdaten.",
+  "5": "loginMessage.AccountId ist dem Kontodaten-Verifizierungsdienst unbekannt! Bitte löschen Sie die Bewerbungsdaten.",
+  "6": "loginMessage.PassToken ist ungültig für loginMessage.AccountId (Authentifizierungsfehler)! Bitte löschen Sie die Bewerbungsdaten.",
+  "7": "„bridgeEvent.SessionId“ ist nicht die aktuelle Sitzungs-ID. Veranstaltungstyp:",
+  "8": "SUPER ANGEBOT",
+  "9": "SONDERANGEBOT"
+}

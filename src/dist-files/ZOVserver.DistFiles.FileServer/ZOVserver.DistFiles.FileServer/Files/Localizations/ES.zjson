@@ -1,0 +1,12 @@
+{
+  "0": "¡Tu dispositivo no es compatible!",
+  "1": "¡Tu dispositivo está prohibido permanentemente!",
+  "2": "Instala la última versión del juego.",
+  "3": "¡El servicio de verificación de datos de la cuenta no está disponible! ¡Este es un error crítico y no puede resolverse por sí solo! Envíe una captura de pantalla a los desarrolladores y no intente iniciar sesión hasta que se solucione el problema.",
+  "4": "loginMessage.PassToken no está vacío. Por favor borre los datos de la aplicación.",
+  "5": "loginMessage.AccountId es desconocido para el servicio de verificación de datos de la cuenta. Por favor borre los datos de la aplicación.",
+  "6": "loginMessage.PassToken no es válido para loginMessage.AccountId (error de autenticación). Por favor borre los datos de la aplicación.",
+  "7": "bridgeEvent.SessionId no es el ID de la sesión actual. Tipo de evento:",
+  "8": "SÚPER OFERTA",
+  "9": "OFERTA ESPECIAL"
+}

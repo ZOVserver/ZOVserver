@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+package giftsservice;
+
+service GiftsService {
+  rpc SendGift (SendGiftRequest) returns (SendGiftResponse);
+}
+
+enum GiftItemType {
+  GIFT_ITEM_TYPE_UNSPECIFIED = 0;
+  GIFT_ITEM_TYPE_GOLD = 1;
+  GIFT_ITEM_TYPE_DIAMONDS = 2;
+  GIFT_ITEM_TYPE_TICKETS = 3;
+  GIFT_ITEM_TYPE_TOKEN_DOUBLER = 4;
+  GIFT_ITEM_TYPE_STAR_POINTS = 5;
+  GIFT_ITEM_TYPE_BRAWLER = 6;
+  GIFT_ITEM_TYPE_BRAWLER_SKIN = 7;
+}
+
+message GiftItem {
+  GiftItemType item_type = 1;
+  int32 quantity = 2;
+  string brawler_name = 3;
+  string skin_name = 4;
+}
+
+message HighLowId {
+  int32 high = 1;
+  int32 low = 2;
+}
+
+message SendGiftRequest {
+  HighLowId player_id = 1;
+  repeated GiftItem items = 2;
+  string reason = 3;
+}
+
+message SendGiftResponse {
+  bool success = 1;
+  string message = 2;
+}

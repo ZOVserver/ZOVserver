@@ -1,0 +1,47 @@
+﻿syntax = "proto3";
+
+package statisticsservice;
+
+service StatisticsService {
+  rpc GetGlobalStats (Empty) returns (GlobalStatsResponse);
+  rpc GetPlayerStats (PlayerStatsRequest) returns (PlayerStatsResponse);
+}
+
+message Empty {}
+
+message PlayerStatsRequest {
+  string user_id = 1;
+  HighLowId high_low_id = 2;
+}
+
+message GlobalStatsResponse {
+  bool success = 1;
+  string message = 2;
+  int32 active_players = 3;
+  int32 active_battles = 4;
+  int32 players = 5;
+  int32 alliances = 6;
+  int32 game_rooms = 7;
+}
+
+message PlayerStatsResponse {
+  bool success = 1;
+  string message = 2;
+  bool is_banned = 3;
+  string ban_reason = 4;
+  string ban_end_time = 5; // UTC timestamp string
+  bool is_locked = 6;
+  string unlock_code = 7;
+  int32 sessions_count = 8;
+  string creation_time = 9; // UTC timestamp string
+  int64 play_time_seconds = 10;
+  string device_language = 11;
+  map<string, int32> devices = 12;
+  map<string, int32> servers_connected = 13;
+  map<string, int32> client_ips = 14;
+}
+
+message HighLowId {
+  int32 high = 1;
+  int32 low = 2;
+}

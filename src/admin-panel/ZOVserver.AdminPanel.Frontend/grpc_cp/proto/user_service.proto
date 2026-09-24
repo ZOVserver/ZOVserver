@@ -1,0 +1,43 @@
+﻿syntax = "proto3";
+
+package userservice;
+
+service UserManagement {
+  rpc BanUser (BanUserRequest) returns (UserResponse);
+  rpc LockUserAccount (LockUserRequest) returns (LockUserResponse);
+  rpc UnlockUserAccount (UserIdRequest) returns (UserResponse);
+}
+
+message UserIdRequest {
+  string user_id = 1;
+  HighLowId high_low_id = 2;
+}
+
+message BanUserRequest {
+  string user_id = 1;
+  HighLowId high_low_id = 2;
+  string reason = 3;
+  int64 unban_timestamp = 4; // UTC timestamp
+}
+
+message LockUserRequest {
+  string user_id = 1;
+  HighLowId high_low_id = 2;
+  string recovery_code = 3;
+}
+
+message UserResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message LockUserResponse {
+  bool success = 1;
+  string message = 2;
+  string recovery_code = 3;
+}
+
+message HighLowId {
+  int32 high = 1;
+  int32 low = 2;
+}

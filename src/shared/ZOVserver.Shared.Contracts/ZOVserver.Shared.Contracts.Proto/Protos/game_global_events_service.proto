@@ -1,0 +1,85 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "ZOVserver.Shared.Contracts.Proto";
+
+service GameGlobalEventsService {
+  rpc TestR (TestRequest) returns (TestResponse);
+  rpc SetDoubleTokensEvent (SetDoubleTokensEventAct) returns (google.protobuf.Empty);
+  rpc SetShopClosed (SetShopClosedAct) returns (google.protobuf.Empty);
+  rpc SetBoxesClosed (SetBoxesClosedAct) returns (google.protobuf.Empty);
+  rpc ResetTrophySeason (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc AddNewUpcomingEvent (AddNewUpcomingEventRequest) returns (AddNewUpcomingEventResponse);
+  rpc RemoveUpcomingEvent (RemoveUpcomingEventRequest) returns (RemoveUpcomingEventResponse);
+  rpc SetLobbyTheme (SetLobbyThemeRequest) returns (SetLobbyThemeResponse);
+  rpc StartMaintenance (StartMaintenanceRequest) returns (StartMaintenanceResponse);
+  rpc StopMaintenance (StopMaintenanceRequest) returns (StopMaintenanceResponse);
+}
+
+message Event {
+  int32 slot = 1;
+  int32 location = 2;
+  repeated int32 modifiers = 3;
+  int32 mini_box_tokens_reward = 4;
+  int64 start_time = 5;
+  int32 lifetimeSeconds = 6;
+}
+
+message TestRequest {
+}
+
+message TestResponse {
+}
+
+message SetDoubleTokensEventAct {
+  bool value = 1;
+}
+
+message SetShopClosedAct  {
+  bool value = 1;
+}
+
+message SetBoxesClosedAct {
+  bool value = 1;
+}
+
+message AddNewUpcomingEventRequest {
+  Event upcoming_event = 1;
+}
+
+message AddNewUpcomingEventResponse {
+  int32 result = 1;
+}
+
+message RemoveUpcomingEventRequest {
+  int32 event_id = 1;
+}
+
+message RemoveUpcomingEventResponse {
+  int32 result = 1;
+}
+
+message SetLobbyThemeRequest {
+  int32 lobby_theme_global_id = 1;
+}
+
+message SetLobbyThemeResponse {
+  int32 result = 1;
+}
+
+message StartMaintenanceRequest {
+  int32 seconds_left = 1;
+}
+
+message StartMaintenanceResponse {
+  int32 result = 1;
+}
+
+message StopMaintenanceRequest {
+  
+}
+
+message StopMaintenanceResponse {
+  int32 result = 1;
+}

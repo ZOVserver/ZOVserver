@@ -1,0 +1,12 @@
+{
+  "0": "Thiết bị của bạn không được hỗ trợ!",
+  "1": "Thiết bị của bạn bị cấm vĩnh viễn!",
+  "2": "Vui lòng cài đặt phiên bản mới nhất của trò chơi.",
+  "3": "Dịch vụ xác minh dữ liệu tài khoản không khả dụng! Đây là lỗi nghiêm trọng và không thể tự khắc phục được! Vui lòng gửi ảnh chụp màn hình cho nhà phát triển và không cố đăng nhập cho đến khi sự cố được khắc phục.",
+  "4": "loginMessage.PassToken không trống! Vui lòng xóa dữ liệu ứng dụng.",
+  "5": "dịch vụ xác minh dữ liệu tài khoản không xác định được loginMessage.AccountId! Vui lòng xóa dữ liệu ứng dụng.",
+  "6": "loginMessage.PassToken không hợp lệ đối với loginMessage.AccountId (lỗi xác thực)! Vui lòng xóa dữ liệu ứng dụng.",
+  "7": "bridgeEvent.SessionId không phải là ID phiên hiện tại. Loại sự kiện:",
+  "8": "SIÊU ƯU ĐÃI",
+  "9": "ƯU ĐÃI ĐẶC BIỆT"
+}

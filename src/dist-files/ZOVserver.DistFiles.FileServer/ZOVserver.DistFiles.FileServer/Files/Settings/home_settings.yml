@@ -1,0 +1,43 @@
+Resources:
+  StartingGold: 200
+  StartingGems: 0
+  StartingTickets: 0
+  StartingStarPoints: 0
+
+Boxes:
+  StartingMiniBoxesCount: 0
+  StartingBigBoxesCount: 0
+
+Brawlers:
+  StartingHeroGIds:
+    - 16000000
+
+Progress:
+  DefaultTutorialState: 2
+  StartingTrophies: 0
+  StartingExperience: 0
+
+TimeSettings:
+  NicknameChangeCooldownHours: 24
+
+Decorations:
+  DefaultLobbyThemeGid: 41000009
+  ShowBattleGameHints: true
+
+GachaSystem:
+  NewAccountPityCounterForRareBrawlers: 1
+  NewAccountPityCounterForSuperRareBrawlers: 8
+  
+  DefaultPityCounterForRareBrawlers: 79
+  DefaultPityCounterForSuperRareBrawlers: 161
+  DefaultPityCounterForEpicBrawlers: 349
+  DefaultPityCounterForMythicBrawlers: 499
+  DefaultPityCounterForLegendaryBrawlers: 1007
+  DefaultPityCounterForStarPower: 200
+  
+  DefaultRareBrawlerChance: 0.03312
+  DefaultSuperRareBrawlerChance: 0.028392
+  DefaultEpicBrawlerChance: 0.004221
+  DefaultMythicBrawlerChance: 0.001121
+  DefaultLegendaryBrawlerChance: 0.000533
+  DefaultStarPowerChance: 0.010402
